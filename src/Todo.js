@@ -43,7 +43,17 @@ const Todo = () => {
     <div className='todo-container'>
       <h2>To do List</h2>
       <input type='text' value={inputValue} onChange={(e)=>setInputValue(e.target.value)}/>
-      <button onClick={addTodo}>Add</button>
+      {
+        editId?(
+          <div>
+            <input type='text' value={editValue} onChange={(e)=>setEditValue(e.target.value)}/>
+            <button onClick={updateTodo}>Update</button>
+          </div>
+        ):(
+          <button onClick={addTodo}>Add</button>
+        )
+      }
+      {/* <button onClick={addTodo}>Add</button> */}
       <ul>
         {todos.map((todo)=>(
             <li key={todo.id}>
